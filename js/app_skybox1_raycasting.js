@@ -24,6 +24,7 @@ function init() {
   scene = new THREE.Scene();
   scene.background = new THREE.Color( 0x8FBCD4 );
 
+
   createskybox();
   createCamera();
   createControls();
@@ -49,7 +50,7 @@ scene.background = new THREE.CubeTextureLoader()
 function createCamera() {
 
   camera = new THREE.PerspectiveCamera( 50, container.clientWidth / container.clientHeight, 0.1, 100000 );
-  camera.position.set( 40, 44, 200);
+  camera.position.set( 25, 25, 120);
 
 }
 
@@ -80,19 +81,19 @@ function createMaterials(){
 
      var imgTexture = new THREE.TextureLoader().load( "texture/forest-bathing-2-e1556293782134.jpg" );
      				imgTexture.wrapS = imgTexture.wrapT = THREE.RepeatWrapping;
-     				imgTexture.anisotropy = 106;
+     				imgTexture.anisotropy = 1006;
 
 
      newStandard = new THREE.MeshStandardMaterial( {
 										map: imgTexture,
 										bumpMap: imgTexture,
-										bumpScale: 200,
+										bumpScale: 500,
 										//color: diffuseColor,
-										metalness: 0.5,
+										metalness: 0.05,
 										roughness: 1.2,
 										envMap: imgTexture,
                     displacementmap: imgTexture,
-                    displacementscale: 7.5,
+                    displacementscale: 10.5,
                     skinning: true
 									} );
 
@@ -219,8 +220,9 @@ function createRenderer() {
 
   renderer.gammaFactor = 0.5;
   renderer.gammaOutput = true;
-  renderer.rotateX = 0.5;
-  renderer.rotateY = 0.5;
+  renderer.rotateX = 9.2;
+  renderer.rotateY = 9.5;
+  renderer.rotate = 9.5;
 
   renderer.physicallyCorrectLights = true;
 
@@ -231,7 +233,7 @@ function createRenderer() {
 }
 function animate() {
         requestAnimationFrame( animate );
-      //  renderer.render( scene, camera );
+       renderer.render( scene, camera );
    }
     //animate();
 function update() {
